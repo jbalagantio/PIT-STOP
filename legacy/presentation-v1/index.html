@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIT STOP</title>
+    <meta name="Author" content="Joshua Balagantio">
+    <link rel="icon" href="./assets/PIT STOP Favicon.png" type="image/png">
+
+    <link rel="stylesheet" href="./styles.legacy.css">
+    <script defer src="./script-legacy.js"></script>
+</head>
+<body>
+    <header class="hero-section">
+        <div class="hero-flex-container">
+            <div id="flex-container-hero-guido">
+                <div id="guido">
+                    <img src="./assets/PIT STOP Favicon.png" alt="PitStop Guido">
+                </div>
+                 <div class="hero-flex-item1">
+                    <h1 id="hero-title">PIT STOP</h1>
+                    <h2 id="hero-sub-title"> Race Strategy Simulator</h2>
+                </div>
+            </div>
+                
+            <div class="hero-flex-item2">
+                <p id="hero-text">Think Ahead. Race Smarter.</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- MAIN RACE DASHBOARD -->
+
+        <div id="main-flex-box">
+
+            <!-- RACE INFO -->
+            <section class="race-info-section main-flex-box-flex-item">
+
+                <h2>Race Info</h2>
+
+                <div class="race-info-top">
+
+                    <ul>
+                        <li>Lap</li>
+                        <li>Position</li>
+                        <li>Gap Ahead</li>
+                        <li>Gap Behind</li>
+                    </ul>
+
+                    <ul>
+                        <li id="lap-counter">-- / 30</li>
+                        <li id="position-tracker">--</li>
+                        <li id="gap-ahead">--</li>
+                        <li id="gap-behind">--</li>
+                    </ul>
+
+                </div>
+
+            </section>
+
+            <!-- TRACK VIEW -->
+
+            <section class="track-view main-flex-box-flex-item">
+
+                <div class="track-view-header">
+                    <h2>Track View</h2>
+                    <h2 id="track-lap-counter">Lap -- / 30</h2>
+                </div>
+
+                <div class="track-canvas-container">
+                    <canvas
+                        id="track-view-canvas"
+                        width="600"
+                        height="400">
+                    </canvas>
+
+                    <div class="rain-effect hidden">
+                        <div class="rain rain-1"></div>
+                        <div class="rain rain-2"></div>
+                        <div class="rain rain-3"></div>
+                    </div>
+
+                    <button id="start-race">Start</button>
+
+                </div>
+
+            </section>
+
+            
+            <!-- RIGHT DASHBOARD -->
+
+            <div class="race-side-panel">
+
+                <!-- CAR STATUS -->
+
+                <section class="car-status-section main-flex-box-flex-item">
+
+                    <h2>Car Status</h2>
+
+                    <ul>
+                        <li id="li-fuel">Fuel</li>
+                        <li id="li-tyre">Tyre Compound: </li>
+                        <li id="li-tyre-life">Tyre Life</li>
+                    </ul>
+
+                </section>
+
+
+                <!-- WEATHER -->
+
+                <section class="weather-section main-flex-box-flex-item">
+
+                    <h2>Weather</h2>
+
+                    <div class="weather-info">
+
+                        <ul>
+                            <li>Track</li>
+                            <li>Air Temp</li>
+                            <li>Wind Speed</li>
+                        </ul>
+
+                        <ul>
+                            <li id="weather-condition-value">--</li>
+                            <li id="air-temp-value">--°C</li>
+                            <li id="wind-speed-value">--km/h</li>
+                        </ul>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+
+        <!-- ENGINEER + STRATEGY -->
+        <div class="sub-flex-box">
+            <!-- RACE ENGINEER -->
+            <section class="race-engineer">
+
+                <div class="race-engineer-header">
+                    <h2>Race Engineer</h2>
+
+                    <div class="doc-status">
+                        <span class="doc-status-dot"></span>
+                        <span>DOC</span>
+                    </div>
+                </div>
+
+
+                <div class="race-engineer-content">
+
+                    <div class="doc-image-container">
+                        <img
+                            class="doc-image"
+                            src="./assets/Doc-Hudson.png"
+                            alt="Doc Hudson">
+                    </div>
+
+
+                    <div class="race-engineer-response">
+
+                        <p class="race-engineer-call">
+                            STRATEGY CALL
+                        </p>
+
+                        <p id="race-engineer-message">
+                            Waiting for race data...
+                        </p>
+
+                        <span class="race-engineer-role">
+                            AI STRATEGY ENGINEER
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="strategy-section">
+
+                <div class="strategy-header">
+                    <h2>Strategy</h2>
+
+                    <span class="strategy-status">
+                        RACE CONTROL
+                    </span>
+                </div>
+
+
+                <div id="control-box">
+
+                    <!-- Pace Controls -->
+
+                    <div class="strategy-control-group">
+
+                        <p class="strategy-control-label">
+                            PACE
+                        </p>
+
+                        <div id="main-strategy-controls">
+
+                            <button id="btn-push">
+                                PUSH
+                            </button>
+
+                            <button id="btn-normal">
+                                NORMAL
+                            </button>
+
+                            <button id="btn-conserve">
+                                CONSERVE
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Pit Configuration -->
+
+                    <div id="pit-strategy-controls">
+
+                        <p class="strategy-control-label">
+                            PIT CONFIGURATION
+                        </p>
+
+                        <div id="tyre-fuel-options">
+
+                            <div class="pit-option-group">
+
+                                <p class="pit-option-label">
+                                    TYRES
+                                </p>
+
+                                <div class="tyre-options">
+
+                                    <button id="btn-wet">
+                                        WET
+                                    </button>
+
+                                    <button id="btn-soft">
+                                        SOFT
+                                    </button>
+
+                                    <button id="btn-medium">
+                                        MEDIUM
+                                    </button>
+
+                                    <button id="btn-hard">
+                                        HARD
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="pit-option-group">
+
+                                <p class="pit-option-label">
+                                    FUEL
+                                </p>
+
+                                <button id="btn-refuel">
+                                    REFUEL
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Pit Action -->
+
+                    <div class="pit-action">
+
+                        <div class="pit-action-text">
+                            <span>PIT STOP</span>
+
+                            <small>
+                                Apply configured service
+                            </small>
+                        </div>
+
+                        <button id="btn-pit">
+                            PIT
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <div class="race-bottom-flex">
+            <!-- LAP LOG -->
+
+            <section class="lap-log-section">
+
+                <h2>Lap Log</h2>
+
+                <ul id="lap-log">
+                    <li>Lap 12 - Normal pace</li>
+                    <li>Lap 13 - Push</li>
+                    <li>Lap 14 - Tyre wear increasing</li>
+                </ul>
+
+            </section>
+
+
+            <!-- RACE SUMMARY -->
+
+            <section class="race-summary-section">
+
+                <h2>Race Summary</h2>
+
+                <div class="race-summary-content">
+
+                    <div class="race-result">
+                        <p id="summary-result">Waiting</p>
+                        <h3 id="summary-position">--</h3>
+                        <p id="summary-winner">Race not started</p>
+                    </div>
+
+                    <div class="race-summary-stats">
+
+                        <ul>
+                            <li>Laps Completed</li>
+                            <li>Final Fuel</li>
+                            <li>Final Tyre</li>
+                            <li>Tyre Life</li>
+                            <li>Final Strategy</li>
+                        </ul>
+
+                        <ul>
+                            <li id="summary-laps">-- / 30</li>
+                            <li id="summary-fuel">--</li>
+                            <li id="summary-tyre">--</li>
+                            <li id="summary-tyre-life">--</li>
+                            <li id="summary-strategy">--</li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <button id="btn-new-race-summary" class="hidden">
+                    NEW RACE
+                </button>
+
+            </section>
+
+        </div>
+
+        <!-- Race Result -->
+        <div class="final-result hidden">
+
+            <div class="race-result-card">
+
+                <p class="race-result-label">
+                    RACE FINISHED
+                </p>
+
+                <h2 id="race-result-winner"></h2>
+
+                <div class="final-podium">
+
+                    <div class="podium-position podium-second">
+                        <span class="podium-car" id="podium-p2">--</span>
+                        <span class="podium-place">P2</span>
+                    </div>
+
+                    <div class="podium-position podium-first">
+                        <span class="podium-car" id="podium-p1">--</span>
+                        <span class="podium-place">P1</span>
+                    </div>
+
+                    <div class="podium-position podium-third">
+                        <span class="podium-car" id="podium-p3">--</span>
+                        <span class="podium-place">P3</span>
+                    </div>
+
+                </div>
+
+                <div class="podium-fourth">
+                    <span>P4</span>
+                    <span id="podium-p4">--</span>
+                </div>
+
+                <button id="btn-view-race-summary">
+                    VIEW RACE SUMMARY
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- SMALL SCREEN MESSAGE -->
+    <section class="small-screen-message">
+
+        <div class="small-screen-content">
+
+            <img
+                class="mater-image"
+                src="./assets/Mater.png"
+                alt="Mater">
+
+            <div class="small-screen-text">
+
+                <p class="small-screen-label">
+                    PIT STOP
+                </p>
+
+                <h1>
+                    Oops! You found me.
+                </h1>
+
+                <p>
+                    Pit Stop isn't ready for smaller screens just yet.
+                </p>
+
+                <p>
+                    This race needs a little more room in the garage.
+                </p>
+
+                <p>Try again on a larger screen.</p>
+
+                <span class="mater-signature">
+                    — Mater
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+        <p>&copy; 2026 Joshua Balagantio</p>
+    </footer>
+
+</body>

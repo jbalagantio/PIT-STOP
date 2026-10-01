@@ -1,0 +1,2069 @@
+/* =========================================================
+   PIT STOP — ALPHA
+   Design System
+   ========================================================= */
+
+:root {
+
+    /* =====================================================
+       COLORS — BASE
+       ===================================================== */
+
+    --color-bg: #090d10;
+    --color-bg-secondary: #0d1217;
+    --color-surface: #111820;
+    --color-surface-raised: #161f28;
+    --color-surface-hover: #1b2630;
+
+    --color-border: #29343e;
+    --color-border-light: #3a4650;
+
+
+    /* =====================================================
+       COLORS — TEXT
+       ===================================================== */
+
+    --color-text-primary: #f4f6f7;
+    --color-text-secondary: #aeb8c1;
+    --color-text-muted: #707c86;
+
+
+    /* =====================================================
+       COLORS — BRAND / ACTIONS
+       ===================================================== */
+
+    --color-red: #e63946;
+    --color-red-hover: #c92f3b;
+
+    --color-green: #2f6b45;
+    --color-green-hover: #3d8558;
+
+    --color-blue: #3b82f6;
+    --color-yellow: #f5b82e;
+    --color-violet: #a855f7;
+
+
+    /* =====================================================
+       COLORS — RACE STATUS
+       ===================================================== */
+
+    --color-success: #35c76f;
+    --color-warning: #f0b429;
+    --color-danger: #e63946;
+    --color-info: #4da3ff;
+
+    --color-rain: #4da3d9;
+    --color-track: #4b4d4c;
+    --color-grass: #9fbd91;
+
+
+    /* =====================================================
+       TYRE COMPOUNDS
+       ===================================================== */
+
+    --tyre-soft: #e63946;
+    --tyre-medium: #f5c542;
+    --tyre-hard: #e8e8e8;
+    --tyre-wet: #4da3ff;
+
+
+    /* =====================================================
+       TYPOGRAPHY
+       ===================================================== */
+
+    --font-main:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
+    --font-size-2xl: 2rem;
+    --font-size-3xl: 2.75rem;
+
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+
+    /* =====================================================
+       SPACING
+       ===================================================== */
+
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+
+
+    /* =====================================================
+       BORDER RADIUS
+       ===================================================== */
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 18px;
+    --radius-pill: 999px;
+
+
+    /* =====================================================
+       SHADOWS
+       ===================================================== */
+
+    --shadow-sm:
+        0 2px 6px rgba(0, 0, 0, 0.25);
+
+    --shadow-md:
+        0 8px 20px rgba(0, 0, 0, 0.30);
+
+    --shadow-lg:
+        0 16px 40px rgba(0, 0, 0, 0.40);
+
+
+    /* =====================================================
+       TRANSITIONS
+       ===================================================== */
+
+    --transition-fast: 120ms ease;
+    --transition-normal: 200ms ease;
+    --transition-slow: 350ms ease;
+
+
+    /* =====================================================
+       LAYOUT
+       ===================================================== */
+
+    --page-max-width: 1600px;
+
+    --header-height: 92px;
+
+    --sidebar-width: 320px;
+
+    --panel-padding: 1rem;
+    --dashboard-gap: 1rem;
+
+
+    /* =====================================================
+       COMPONENT SIZES
+       ===================================================== */
+
+    --button-height: 44px;
+    --control-height: 40px;
+    --icon-size: 20px;
+    --status-bar-height: 8px;
+
+
+    /* =====================================================
+       Z-INDEX
+       ===================================================== */
+
+    --z-base: 1;
+    --z-panel: 10;
+    --z-overlay: 100;
+    --z-modal: 1000;
+}
+
+
+
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+
+html {
+    font-family: var(--font-main);
+}
+
+
+body {
+    min-height: 100vh;
+
+    background: var(--color-bg);
+
+    color: var(--color-text-primary);
+}
+
+
+/* Background */
+body {
+    min-height: 100vh;
+
+    background-image:
+        linear-gradient(
+            rgba(9, 13, 16, 0.45),
+            rgba(9, 13, 16, 0.65)
+        ),
+        url("./assets/pit-stop-background.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    color: var(--color-text-primary);
+}
+
+
+.dashboard-page {
+    width: fit-content;
+    max-width: 100%;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   NAVIGATION — PIT STOP ALPHA
+   ========================================================= */
+
+.main-nav {
+    width: 100%;
+    height: var(--header-height);
+
+    background: var(--color-bg-secondary);
+
+    border-bottom:
+        1px solid
+        var(--color-border);
+}
+
+
+
+/* =========================================================
+   MAIN NAV LAYOUT
+   ========================================================= */
+
+.nav-flex-container {
+    width: 100%;
+    max-width: var(--page-max-width);
+
+    height: 100%;
+
+    margin: 0 auto;
+
+    padding:
+        0
+        var(--space-8);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-10);
+}
+
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+#flex-container-nav-guido {
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-4);
+
+    flex-shrink: 0;
+}
+
+
+
+/* =========================================================
+   GUIDO
+   ========================================================= */
+
+#guido {
+    width: 62px;
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+
+#guido img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+
+
+/* =========================================================
+   TITLE + TAGLINE
+   ========================================================= */
+
+.nav-flex-item1 {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: var(--space-2);
+}
+
+
+#nav-title {
+    margin: 0;
+
+    font-size: var(--font-size-xl);
+
+    font-weight: var(--font-weight-bold);
+
+    line-height: 1;
+
+    letter-spacing: 0.08em;
+
+    color: var(--color-text-primary);
+}
+
+
+.nav-title-stop {
+    color: var(--color-red);
+}
+
+
+#nav-sub-title {
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-2);
+
+    list-style: none;
+
+    font-size: var(--font-size-xs);
+
+    font-weight: var(--font-weight-medium);
+
+    line-height: 1;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.08em;
+
+    color: var(--color-text-muted);
+}
+
+
+#nav-sub-title li {
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-2);
+}
+
+
+#nav-sub-title li:not(:last-child)::after {
+    content: "•";
+
+    color: var(--color-red);
+}
+
+
+/* =========================================================
+   NAVIGATION LINKS
+   ========================================================= */
+
+.nav-links {
+    height: 100%;
+
+    display: flex;
+
+    align-items: stretch;
+
+    gap: var(--space-2);
+
+    margin-left: auto;
+}
+
+
+.nav-link {
+    position: relative;
+
+    height: 100%;
+
+    padding:
+        0
+        var(--space-5);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: var(--color-text-muted);
+
+    font-size: var(--font-size-sm);
+
+    font-weight: var(--font-weight-semibold);
+
+    text-decoration: none;
+
+    letter-spacing: 0.05em;
+
+    transition:
+        color var(--transition-fast),
+        background-color var(--transition-fast);
+}
+
+
+.nav-link:hover {
+    color: var(--color-text-primary);
+
+    background: var(--color-surface);
+}
+
+
+.nav-link.active {
+    color: var(--color-text-primary);
+}
+
+
+.nav-link.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: var(--space-5);
+    right: var(--space-5);
+    bottom: 0;
+
+    height: 3px;
+
+    background: var(--color-red);
+
+    border-radius:
+        var(--radius-sm)
+        var(--radius-sm)
+        0
+        0;
+}
+
+
+
+/* =========================================================
+   ALPHA VERSION BADGE
+   ========================================================= */
+
+#version {
+    width: auto;
+
+    padding:
+        var(--space-2)
+        var(--space-4);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-2);
+
+    flex-shrink: 0;
+
+    background: var(--color-surface);
+
+    border:
+        1px solid
+        var(--color-border);
+
+    border-radius: var(--radius-pill);
+
+    color: var(--color-text-secondary);
+
+    font-size: var(--font-size-xs);
+
+    font-weight: var(--font-weight-semibold);
+
+    letter-spacing: 0.08em;
+}
+
+
+.version-indicator {
+    width: 8px;
+    height: 8px;
+
+    flex-shrink: 0;
+
+    background: var(--color-success);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 8px
+        rgba(53, 199, 111, 0.5);
+}
+
+
+
+/* =========================================================
+   TRACK VIEW
+   ========================================================= */
+
+.track-view {
+    width: 100%;
+}
+
+
+/* =========================================================
+   TRACK CANVAS CONTAINER
+   ========================================================= */
+
+.track-canvas-container {
+    position: relative;
+
+    width: 700px;
+    max-width: 100%;
+
+    overflow: hidden;
+
+    background: var(--color-surface);
+
+    border:
+        1px solid
+        var(--color-border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-md);
+}
+
+
+
+/* =========================================================
+   TRACK CANVAS
+   ========================================================= */
+
+#track-view-canvas {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    background-color: var(--color-track);
+}
+
+
+
+/* =========================================================
+   WEATHER OVERLAY
+   ========================================================= */
+
+.weather-section {
+    position: absolute;
+
+    top: var(--space-4);
+    left: var(--space-4);
+
+    z-index: var(--z-panel);
+
+    padding:
+        var(--space-3)
+        var(--space-4);
+
+    background:
+        rgba(9, 13, 16, 0.5);
+
+    border:
+        1px solid var(--color-border-light);
+
+    border-radius: var(--radius-md);
+
+    box-shadow: var(--shadow-sm);
+}
+
+
+
+/* =========================================================
+   WEATHER GRID
+   ========================================================= */
+
+.weather-info {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, auto);
+
+    column-gap: var(--space-6);
+}
+
+
+.weather-info ul {
+    display: contents;
+
+    list-style: none;
+}
+
+
+
+/* =========================================================
+   WEATHER LABELS
+   ========================================================= */
+
+.weather-info ul:first-child li {
+    grid-row: 1;
+
+    font-size: var(--font-size-xs);
+
+    font-weight: var(--font-weight-medium);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.05em;
+
+    color: var(--color-text-secondary);
+}
+
+
+/* =========================================================
+   WEATHER VALUES
+   ========================================================= */
+
+.weather-info ul:last-child li {
+    grid-row: 2;
+
+    margin-top: var(--space-1);
+
+    font-size: var(--font-size-sm);
+
+    font-weight: var(--font-weight-semibold);
+
+    color: var(--color-text-primary);
+}
+
+
+/* =========================================================
+   LAP COUNTER OVERLAY
+   ========================================================= */
+
+#track-lap-counter {
+    position: absolute;
+
+    top: var(--space-4);
+    right: var(--space-4);
+
+    z-index: var(--z-panel);
+
+    padding:
+        var(--space-2)
+        var(--space-3);
+
+    background:
+        rgba(9, 13, 16, 0.5);
+
+    border:
+        1px solid var(--color-border-light);
+
+    border-radius: var(--radius-md);
+
+    color: var(--color-text-primary);
+
+    font-size: var(--font-size-sm);
+
+    font-weight: var(--font-weight-bold);
+
+    letter-spacing: 0.05em;
+}
+
+
+/* =========================================================
+   START RACE OVERLAY
+   ========================================================= */
+
+#start-race {
+    position: absolute;
+
+    left: 50%;
+    bottom: var(--space-6);
+
+    transform:
+        translateX(-50%);
+
+    z-index: var(--z-overlay);
+
+    min-width: 150px;
+
+    height: var(--button-height);
+
+    padding:
+        0
+        var(--space-6);
+
+    background: var(--color-green);
+
+    border:
+        1px solid
+        var(--color-green-hover);
+
+    border-radius: var(--radius-md);
+
+    color: var(--color-text-primary);
+
+    font-family: var(--font-main);
+
+    font-size: var(--font-size-sm);
+
+    font-weight: var(--font-weight-bold);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.08em;
+
+    cursor: pointer;
+
+    box-shadow: var(--shadow-md);
+
+    transition:
+        background-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+
+#start-race:hover {
+    background: var(--color-green-hover);
+
+    transform:
+        translateX(-50%)
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   RAIN OVERLAY
+   ========================================================= */
+
+.rain-effect {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    z-index: var(--z-base);
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+.rain-effect.hidden {
+    display: none;
+}
+
+/* =========================================================
+   RIGHT DASHBOARD
+   ========================================================= */
+.race-side-panel {
+    width: 400px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--space-4);
+}
+
+
+/* =========================================================
+   YOUR CAR PANEL
+   ========================================================= */
+
+.your-car-header {
+    min-height: 64px;
+
+    padding: 
+        var(--space-3)
+        var(--space-5);
+    
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-4);
+
+    background: var(--color-surface);
+
+    border: 
+        1px solid var(--color-border);
+
+    border-bottom: none;
+
+    border-radius: 
+        var(--radius-lg)
+        var(--radius-lg)
+        0
+        0;
+
+}
+
+.your-car-header h2 {
+    font-size: var(--font-size-md);
+
+    font-weight: var(--font-weight-bold);
+
+    letter-spacing: 0.04em;
+
+    color: var(--color-text-primary);
+}
+
+
+
+/* =========================================================
+   YOUR CAR ICON
+   ========================================================= */
+
+.your-car-icon {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border:
+        1px solid
+        var(--color-border-light);
+
+    border-radius: 50%;
+}
+
+
+
+/* =========================================================
+   MAIN CAR INFORMATION PANEL
+   ========================================================= */
+
+.race-info-top {
+    padding: 
+        0
+        var(--space-5)
+        var(--space-5);
+
+    background: var(--color-surface);
+
+    border: 
+        1px solid var(--color-border);
+    
+    border-top: none;
+
+    border-radius: 
+        0
+        0
+        var(--radius-lg)
+        var(--radius-lg);
+
+    box-shadow: var(--shadow-md);
+}
+
+
+
+   /* =========================================================
+   POSITION INFORMATION
+   ========================================================= */
+
+.race-postion-info {
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+
+/* =========================================================
+   POSITION ROWS
+   ========================================================= */
+
+.race-info-row {
+    min-height: 46px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: var(--space-4);
+
+    border-bottom: 
+        1px solid var(--color-border);
+    
+}
+
+.race-info-row > span:first-child {
+    font-size: var(--font-size-sm);
+
+    font-weight: var(--font-weight-normal);
+
+    color: var(--color-text-secondary);
+}
+
+.race-info-row > span:last-child {
+    font-size: var(--font-size-md);
+
+    font-weight: var(--font-weight-bold);
+
+    color: var(--color-text-primary);
+}
+
+
+
+/* =========================================================
+   POSITION VALUE
+   ========================================================= */
+
+#position-tracker {
+    font-size: var(--font-size-lg);
+
+    color: var(--color-text-primary);
+}
+
+
+
+/* =========================================================
+   CAR STATUS
+   ========================================================= */
+
+.car-status-section {
+    margin-top: var(--space-4);
+
+    display: flex;
+
+    flex-direction: column;
+
+    border-top: 1px solid var(--color-border-light);
+}
+
+
+
+/* =========================================================
+   CAR STATUS ROW
+   ========================================================= */
+
+.car-status-row {
+    min-height: 54px;
+
+    display: grid;
+    grid-template-columns: 125px 1fr;
+
+    align-items: center;
+
+    gap: var(--space-4);
+
+    border-bottom: 
+        1px solid var(--color-border);
+}
+
+
+/* =========================================================
+   CAR STATUS VALUE AREA
+   ========================================================= */
+
+.car-status-value {
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-3);
+}
+
+/* =========================================================
+   JS-CONTROLLED CAR VALUES
+   ========================================================= */
+
+#li-fuel,
+#li-tyre,
+#li-tyre-life {
+    min-width: 72px;
+
+    font-size: var(--font-size-md);
+
+    font-weight: var(--font-weight-bold);
+
+    color: var(--color-text-primary);
+}
+
+
+
+/* =========================================================
+   STATUS BARS
+   ========================================================= */
+
+.status-bar {
+    height: 10px;
+
+    flex: 1;
+
+    overflow: hidden;
+
+    background: var(--color-bg-secondary);
+
+    border: 
+        1px solid var(--color-border-light);
+    
+    border-radius: var(--radius-sm);
+
+}
+
+/* =========================================================
+   STATUS BAR FILL
+   ========================================================= */
+
+.status-bar-fill {
+    height: 100%;
+
+    border-radius:
+        calc(var(--radius-sm) - 1px);
+}
+
+/* Temporary visual width.
+
+   We will replace these with JS-controlled
+   values afterward.
+*/
+
+.fuel-bar-fill {
+    width: 62%;
+
+    background: var(--color-success);
+}
+
+
+.tyre-bar-fill {
+    width: 48%;
+
+    background: var(--color-yellow);
+}
+
+
+
+/* =========================================================
+   TYRE COMPOUND INDICATOR
+   ========================================================= */
+
+.tyre-indicator {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border:
+        3px solid
+        var(--tyre-medium);
+
+    border-radius: 50%;
+
+    color: var(--tyre-medium);
+
+    font-size: var(--font-size-sm);
+
+    font-weight: var(--font-weight-bold);
+}
+
+
+
+/* =========================================================
+   RACE ENGINEER PANEL
+   ========================================================= */
+
+.race-engineer {
+    padding: var(--space-4);
+
+    background: var(--color-surface);
+
+    border:
+        1px solid
+        var(--color-border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-md);
+}
+
+
+
+/* =========================================================
+   RACE ENGINEER HEADER
+   ========================================================= */
+
+.race-engineer-header {
+    margin-bottom: var(--space-4);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: var(--space-4);
+}
+
+
+
+/* =========================================================
+   RACE ENGINEER TITLE
+   ========================================================= */
+
+.race-engineer-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-3);
+}
+
+
+.race-engineer-title h2 {
+    font-size: var(--font-size-sm);
+
+    font-weight: var(--font-weight-bold);
+
+    letter-spacing: 0.04em;
+
+    color: var(--color-text-primary);
+}
+
+
+
+/* =========================================================
+   ENGINEER ICON PLACEHOLDER
+   ========================================================= */
+
+.race-engineer-icon {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border:
+        2px solid
+        var(--color-text-primary);
+
+    border-radius: 50%;
+
+    color: var(--color-text-primary);
+}
+
+
+
+/* =========================================================
+   DOC STATUS
+   ========================================================= */
+
+.doc-status {
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-2);
+
+    font-size: var(--font-size-xs);
+
+    font-weight: var(--font-weight-semibold);
+
+    color: var(--color-text-secondary);
+}
+
+
+.doc-status-dot {
+    width: 8px;
+    height: 8px;
+
+    background: var(--color-success);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 8px
+        rgba(53, 199, 111, 0.5);
+}
+
+
+
+/* =========================================================
+   RACE ENGINEER CONTENT
+   ========================================================= */
+
+.race-engineer-content {
+    display: flex;
+
+    align-items: stretch;
+
+    gap: var(--space-3);
+}
+
+
+
+/* =========================================================
+   DOC IMAGE
+   ========================================================= */
+
+.doc-image-container {
+    width: 72px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: center;
+}
+
+
+.doc-image {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+}
+
+
+
+/* =========================================================
+   ENGINEER RESPONSE BOX
+   ========================================================= */
+
+.race-engineer-response {
+    flex: 1;
+
+    min-width: 0;
+
+    padding:
+        var(--space-3)
+        var(--space-4);
+
+    background: var(--color-surface-raised);
+
+    border:
+        1px solid
+        var(--color-border-light);
+
+    border-radius: var(--radius-md);
+}
+
+
+
+/* =========================================================
+   STRATEGY CALL LABEL
+   ========================================================= */
+
+.race-engineer-call {
+    margin-bottom: var(--space-2);
+
+    font-size: var(--font-size-xs);
+
+    font-weight: var(--font-weight-semibold);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.08em;
+
+    color: var(--color-info);
+}
+
+
+
+/* =========================================================
+   DOC MESSAGE
+   ========================================================= */
+
+#race-engineer-message {
+    margin-bottom: var(--space-3);
+
+    font-size: var(--font-size-sm);
+
+    font-weight: var(--font-weight-normal);
+
+    line-height: 1.5;
+
+    color: var(--color-text-primary);
+}
+
+
+
+/* =========================================================
+   ENGINEER ROLE
+   ========================================================= */
+
+.race-engineer-role {
+    display: block;
+
+    font-size: var(--font-size-xs);
+
+    font-weight: var(--font-weight-medium);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.06em;
+
+    color: var(--color-text-muted);
+}
+
+
+/* ========================================
+   MAIN DASHBOARD LAYOUT
+======================================== */
+
+#main-flex-box {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+
+    width: fit-content;
+    max-width: 100%;
+
+    margin: 0 auto;
+
+    gap: var(--dashboard-gap);
+}
+
+
+/* ========================================
+   TRACK AREA
+======================================== */
+
+.track-view {
+    flex: 0 0 800px;
+
+    width: 800px;
+    min-width: 800px;
+}
+
+
+/* ========================================
+   TRACK CANVAS CONTAINER
+======================================== */
+
+.track-canvas-container {
+    width: 100%;
+}
+
+
+/* ========================================
+   CANVAS
+======================================== */
+
+#track-view-canvas {
+    display: block;
+
+    width: 100%;
+    height: auto;
+}
+
+
+/* ========================================
+   RIGHT DASHBOARD
+======================================== */
+
+.race-side-panel {
+    display: flex;
+    flex-direction: column;
+
+    flex: 0 0 var(--sidebar-width);
+
+    width: var(--sidebar-width);
+
+    gap: var(--dashboard-gap);
+}
+
+
+/* =========================================================
+   LOWER DASHBOARD
+   ========================================================= */
+
+.sub-flex-box {
+    width: 100%;
+
+    margin-top: var(--dashboard-gap);
+}
+
+
+/* =========================================================
+   STRATEGY SECTION
+   ========================================================= */
+
+.strategy-section {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1.35fr;
+
+    gap: var(--dashboard-gap);
+}
+
+
+/* =========================================================
+   STRATEGY PANELS
+   ========================================================= */
+
+.strategy-panel {
+    min-width: 0;
+
+    background: var(--color-surface);
+
+    border:
+        1px solid
+        var(--color-border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-md);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   PANEL HEADERS
+   ========================================================= */
+
+.strategy-panel-header {
+    min-height: 52px;
+
+    padding:
+        0
+        var(--space-5);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: var(--space-4);
+
+    background: var(--color-bg-secondary);
+
+    border-bottom:
+        1px solid
+        var(--color-border);
+}
+
+
+.strategy-panel-header h2 {
+    font-size: var(--font-size-sm);
+
+    font-weight: var(--font-weight-bold);
+
+    letter-spacing: 0.06em;
+
+    color: var(--color-text-primary);
+}
+
+
+.strategy-status {
+    padding:
+        var(--space-1)
+        var(--space-3);
+
+    background: var(--color-surface-raised);
+
+    border:
+        1px solid
+        var(--color-border-light);
+
+    border-radius: var(--radius-pill);
+
+    color: var(--color-text-muted);
+
+    font-size: var(--font-size-xs);
+
+    font-weight: var(--font-weight-semibold);
+
+    letter-spacing: 0.05em;
+}
+
+
+/* =========================================================
+   DRIVING STRATEGY
+   ========================================================= */
+
+#control-box {
+    padding: var(--space-4);
+}
+
+
+.strategy-control-group {
+    width: 100%;
+}
+
+
+#main-strategy-controls {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: var(--space-3);
+}
+
+
+/* =========================================================
+   STRATEGY OPTION
+   ========================================================= */
+
+.strategy-option {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--space-3);
+}
+
+
+/* =========================================================
+   PACE BUTTONS
+   ========================================================= */
+
+#btn-push,
+#btn-normal,
+#btn-conserve {
+    width: 100%;
+    min-height: 82px;
+
+    padding: var(--space-3);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: var(--space-2);
+
+    background: var(--color-surface-raised);
+
+    border:
+        1px solid
+        var(--color-border-light);
+
+    border-radius: var(--radius-md);
+
+    color: var(--color-text-primary);
+
+    font-family: var(--font-main);
+
+    cursor: pointer;
+
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+
+#btn-push:hover,
+#btn-normal:hover,
+#btn-conserve:hover {
+    background: var(--color-surface-hover);
+
+    transform: translateY(-2px);
+}
+
+
+/* PUSH */
+
+#btn-push:hover {
+    border-color: var(--color-red);
+}
+
+
+/* NORMAL */
+
+#btn-normal:hover {
+    border-color: var(--color-blue);
+}
+
+
+/* CONSERVE */
+
+#btn-conserve:hover {
+    border-color: var(--color-success);
+}
+
+
+/* =========================================================
+   PACE BUTTON LABEL
+   ========================================================= */
+
+.strategy-button-label {
+    font-size: var(--font-size-sm);
+
+    font-weight: var(--font-weight-bold);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.05em;
+}
+
+
+/* =========================================================
+   PACE ICON BASE
+   ========================================================= */
+
+.pace-icon {
+    width: 28px;
+    height: 26px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 1px;
+}
+
+
+/* =========================================================
+   PUSH CHEVRONS
+   ========================================================= */
+
+.pace-icon-push span {
+    width: 13px;
+    height: 13px;
+
+    border-top:
+        3px solid
+        var(--color-red);
+
+    border-left:
+        3px solid
+        var(--color-red);
+
+    transform: rotate(45deg);
+}
+
+
+.pace-icon-push span + span {
+    margin-top: -8px;
+}
+
+
+/* =========================================================
+   NORMAL ICON
+   ========================================================= */
+
+.pace-icon-normal {
+    gap: 4px;
+}
+
+
+.pace-icon-normal span {
+    width: 22px;
+    height: 3px;
+
+    background: var(--color-blue);
+
+    border-radius: var(--radius-pill);
+}
+
+
+/* =========================================================
+   CONSERVE CHEVRONS
+   ========================================================= */
+
+.pace-icon-conserve span {
+    width: 13px;
+    height: 13px;
+
+    border-right:
+        3px solid
+        var(--color-success);
+
+    border-bottom:
+        3px solid
+        var(--color-success);
+
+    transform: rotate(45deg);
+}
+
+
+.pace-icon-conserve span + span {
+    margin-top: -8px;
+}
+
+
+/* =========================================================
+   STRATEGY DESCRIPTION
+   ========================================================= */
+
+.strategy-description {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: var(--space-1);
+
+    text-align: center;
+
+    color: var(--color-text-muted);
+
+    font-size: 0.68rem;
+
+    line-height: 1.35;
+}
+
+
+/* =========================================================
+   PIT OPTIONS
+   ========================================================= */
+
+#pit-strategy-controls {
+    padding: var(--space-4);
+}
+
+
+#tyre-fuel-options {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: var(--space-3);
+}
+
+
+.pit-option {
+    min-width: 0;
+}
+
+
+/* =========================================================
+   PIT BUTTONS
+   ========================================================= */
+
+#btn-wet,
+#btn-soft,
+#btn-medium,
+#btn-hard,
+#btn-refuel {
+    width: 100%;
+    min-height: 112px;
+
+    padding: var(--space-3);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: var(--space-3);
+
+    background: var(--color-surface-raised);
+
+    border:
+        1px solid
+        var(--color-border-light);
+
+    border-radius: var(--radius-md);
+
+    color: var(--color-text-primary);
+
+    font-family: var(--font-main);
+
+    cursor: pointer;
+
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+
+#btn-wet:hover,
+#btn-soft:hover,
+#btn-medium:hover,
+#btn-hard:hover,
+#btn-refuel:hover {
+    background: var(--color-surface-hover);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   PIT BUTTON LABELS
+   ========================================================= */
+
+.pit-button-label {
+    font-size: var(--font-size-xs);
+
+    font-weight: var(--font-weight-bold);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.05em;
+
+    color: var(--color-text-secondary);
+}
+
+
+/* =========================================================
+   TYRE ICONS
+   ========================================================= */
+
+.tyre-option-icon {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        4px solid
+        currentColor;
+
+    border-radius: 50%;
+
+    font-size: var(--font-size-md);
+
+    font-weight: var(--font-weight-bold);
+}
+
+
+/* SOFT */
+
+.tyre-soft-icon {
+    color: var(--tyre-soft);
+}
+
+
+/* MEDIUM */
+
+.tyre-medium-icon {
+    color: var(--tyre-medium);
+}
+
+
+/* HARD */
+
+.tyre-hard-icon {
+    color: var(--tyre-hard);
+}
+
+
+/* =========================================================
+   WET + FUEL ICON PLACEHOLDERS
+   ========================================================= */
+
+.pit-button-icon {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: var(--font-size-lg);
+
+    font-weight: var(--font-weight-bold);
+}
+
+
+.wet-icon {
+    color: var(--tyre-wet);
+
+    border:
+        2px solid
+        var(--tyre-wet);
+}
+
+
+.fuel-icon {
+    color: var(--color-text-secondary);
+
+    border:
+        2px solid
+        var(--color-border-light);
+}
+
+
+/* =========================================================
+   PIT BUTTON HOVER COLORS
+   ========================================================= */
+
+#btn-wet:hover {
+    border-color: var(--tyre-wet);
+}
+
+
+#btn-soft:hover {
+    border-color: var(--tyre-soft);
+}
+
+
+#btn-medium:hover {
+    border-color: var(--tyre-medium);
+}
+
+
+#btn-hard:hover {
+    border-color: var(--tyre-hard);
+}
+
+
+#btn-refuel:hover {
+    border-color: var(--color-text-secondary);
+}
+
+
+/* =========================================================
+   TEMPORARY LEGACY PIT ACTION
+   ========================================================= */
+
+.pit-action-legacy {
+    margin:
+        0
+        var(--space-4)
+        var(--space-4);
+
+    padding:
+        var(--space-3)
+        var(--space-4);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: var(--space-4);
+
+    background: var(--color-bg-secondary);
+
+    border:
+        1px solid
+        var(--color-border);
+
+    border-radius: var(--radius-md);
+}
+
+
+.pit-action-text {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--space-1);
+}
+
+
+.pit-action-text span {
+    font-size: var(--font-size-xs);
+
+    font-weight: var(--font-weight-bold);
+
+    letter-spacing: 0.06em;
+}
+
+
+.pit-action-text small {
+    color: var(--color-text-muted);
+
+    font-size: 0.68rem;
+}
+
+
+#btn-pit {
+    min-width: 80px;
+
+    height: var(--control-height);
+
+    padding:
+        0
+        var(--space-4);
+
+    background: var(--color-red);
+
+    border:
+        1px solid
+        var(--color-red);
+
+    border-radius: var(--radius-md);
+
+    color: var(--color-text-primary);
+
+    font-family: var(--font-main);
+
+    font-size: var(--font-size-xs);
+
+    font-weight: var(--font-weight-bold);
+
+    letter-spacing: 0.08em;
+
+    cursor: pointer;
+
+    transition:
+        background-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+
+#btn-pit:hover {
+    background: var(--color-red-hover);
+
+    transform: translateY(-1px);
+}
+
+
