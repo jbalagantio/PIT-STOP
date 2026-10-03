@@ -1,7 +1,3 @@
-// The Orchestrator JS File is now Main located at ./p3-js-api-app/js/main.js
-// This file is now only being kept as a fallback for ./js/main.js 
-
-
 console.log("PIT STOP JS Loaded!");
 
 const btnStart = document.querySelector("#start-race");
@@ -23,7 +19,7 @@ import {
     cars,
     docFuelWarning,
     docTyreWarning,
-} from "./js/state.js";
+} from "./state.js";
 
 // importing race engine
 import { 
@@ -34,10 +30,10 @@ import {
     computerSafetyCheck,
     raceStatus,
     carsRanking,
-} from "./js/race.js";
+} from "./race.js";
 
 // importing canvas
-import { updateCarVisualPositions, resetCarVisualPostions } from "./js/canvas.js";
+import { updateCarVisualPositions, resetCarVisualPostions } from "./canvas.js";
 
 // importing UI
 import { 
@@ -51,16 +47,16 @@ import {
     hideFinalResult,
     showRaceEngineerMessage,
     renderCarsRanking,
-} from "./js/ui.js";
+} from "./ui.js";
 
 // importing doc
 import {
     docDecisionCycle,
     resetDoc,
-} from "./js/doc.js";
+} from "./doc.js";
 
 
-import {getLocation} from "./js/weather.js"
+import {getLocation} from "./weather.js"
 
 //                          Race Simulation
 function raceSimulation() {
