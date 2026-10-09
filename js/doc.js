@@ -665,7 +665,6 @@ export const resetDoc = () => {
     lastDocLap = -1;
     docIsThinking = false;
     lastDocRequestTime = 0;
-    docCooldown = 5000;
 };
 
 

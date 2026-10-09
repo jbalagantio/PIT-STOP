@@ -3,13 +3,14 @@ import { weather, race, cars } from "./state.js";
 
 import { renderCarsRanking } from "./ui.js";
 
+
 //                  Car Position in the race
 // who leads the race and who is behind
 export const racePosition = (car) => {
     
     return car.lapsCompleted * 30 + car.position;
     
-}
+};
 
 // selection sort is used because its O(n^2) is irrelevant for data this size
 export const sortCarsByProgress = (carsToSort) => {
@@ -26,8 +27,8 @@ export const sortCarsByProgress = (carsToSort) => {
 
             if (nextCarProgress > leadingCarProgress) {
                 leadingCar = nextIndex;
-            }
-        }
+            };
+        };
 
         if (leadingCar !== i) {
             //swap
@@ -35,8 +36,8 @@ export const sortCarsByProgress = (carsToSort) => {
 
             carsToSort[i] = carsToSort[leadingCar]
             carsToSort[leadingCar] = temp;
-        }
-    }
+        };
+    };
 
     return carsToSort;
 };
@@ -72,25 +73,25 @@ export const carProgress = (car) => {
         };
 
         if (weather.condition === "clear") {
-        if (car.tyreCompound === "wet") {
-            car.speed = car.speed - 0.20;
-        } else {
-            car.speed = car.speed;
-        };
-    } else if (weather.condition === "wet") {
-        if (car.tyreCompound === "wet") {
-            car.speed = car.speed;
-        } else {
-            car.speed = car.speed - 0.30;
-        };
-    } else if (weather.condition === "rain") {
-        if (car.tyreCompound === "wet") {
-            car.speed = car.speed;
-        } else {
-            car.speed = car.speed - 0.60;
+            if (car.tyreCompound === "wet") {
+                car.speed = car.speed - 0.20;
+            } else {
+                car.speed = car.speed;
+            };
+        } else if (weather.condition === "wet") {
+            if (car.tyreCompound === "wet") {
+                car.speed = car.speed;
+            } else {
+                car.speed = car.speed - 0.30;
+            };
+        } else if (weather.condition === "rain") {
+            if (car.tyreCompound === "wet") {
+                car.speed = car.speed;
+            } else {
+                car.speed = car.speed - 0.60;
+            };
         };
     };
-    }
 
     car.position += car.speed;
 };
@@ -255,7 +256,7 @@ export const releaseCar = (car) => {
 };
 
 
-// //                  PIT STOP
+//                  PIT STOP
 export const pitStop = (car) => {
 
     if (car.isPitting === false) {
