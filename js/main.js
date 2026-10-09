@@ -58,6 +58,26 @@ import {
 
 import {getLocation} from "./weather.js"
 
+
+// disable car controls if race.isRunning === false;
+const disableCarControls = () => {
+    const carControls = [
+        btnPush,
+        btnNormal,
+        btnConserve,
+        btnPit,
+        btnWetTyres,
+        btnSoftTyres,
+        btnMediumTyres,
+        btnHardTyres,
+        btnRefuel,
+    ];
+
+    carControls.forEach((button) => {
+        button.disabled = race.isRunning === false;
+    });
+};
+
 //                          Race Simulation
 function raceSimulation() {
     cars.forEach((car) => {
@@ -135,11 +155,20 @@ btnPit.addEventListener("click", () => {
 
 //          Start Race
 const startRace = () => {
+    // prevent startRace(); from running when race.isRunning === true; 
+    if (race.isRunning === true) {
+        return;
+    }
+
     clearLapLog();
 
     addLapLog("Race started");
 
     race.isRunning = true;
+
+    // enabling car controls once race starts
+    disableCarControls();
+
     raceSimulation();
 };
 
@@ -149,6 +178,8 @@ const resetRace = () => {
     // Race State
     race.isRunning = false;
     race.winner = null;
+    // show start button after reset
+    btnStart.classList.remove("hidden");
 
     // Cars State
     cars.forEach((car) => {
@@ -206,6 +237,11 @@ btnStart.addEventListener("click", () => {
     showRaceEngineerMessage();
 
     startRace();
+
+    // hide btnStartRace when race.isRunning === true;
+    if (race.isRunning === true) {
+        btnStart.classList.add("hidden");
+    } 
 });
 
 
@@ -265,3 +301,5 @@ btnRefuel.addEventListener("click", () => {
     );
 });
 
+//onload - dsiable car control to preserve baseline strategy at the beginning of the race
+disableCarControls();
